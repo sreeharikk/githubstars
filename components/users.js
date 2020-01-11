@@ -5,6 +5,7 @@ import { getUsers } from '../actions'
 
 class Users extends Component {
   getUsers = () => {
+    console.log('getUsers')
     this.props.dispatch(getUsers())
   }
 
@@ -13,7 +14,7 @@ class Users extends Component {
     return (
       <div>
         <h1>{title}</h1>
-        <input type='text' name='location'/>
+        <input type='text' name='location' placeholder="Location"/>
         <button onClick={this.getUsers}>Submit</button>
       </div>
     )

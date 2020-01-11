@@ -4,15 +4,15 @@ import { all, call, delay, put, take, takeLatest } from 'redux-saga/effects'
 import es6promise from 'es6-promise'
 import 'isomorphic-unfetch'
 
-import { actionTypes, failure, } from './actions'
+import { actionTypes, failure, fetUsersSuccess} from './actions'
 
 es6promise.polyfill()
 
-function* loadDataSaga() {
+function* fetchGithubUsersByLocation(action) {
   try {
-    const res = yield fetch('https://jsonplaceholder.typicode.com/users')
+    const res = yield fetch(`https://api.github.com/search/users?q=location:Bangalore`)
     const data = yield res.json()
-    yield put(loadDataSuccess(data))
+    yield put(fetUsersSuccess(data && data.items||[]))
   } catch (err) {
     yield put(failure(err))
   }
@@ -20,7 +20,7 @@ function* loadDataSaga() {
 
 function* rootSaga() {
   yield all([
-    // takeLatest(actionTypes.LOAD_DATA, loadDataSaga),
+    takeLatest(actionTypes.GET_USERS, fetchGithubUsersByLocation),
   ])
 }
 

@@ -1,7 +1,7 @@
 import { actionTypes } from './actions'
 
 export const exampleInitialState = {
-  count: 0,
+  users: null,
   error: false,
 }
 
@@ -13,16 +13,10 @@ function reducer(state = exampleInitialState, action) {
         ...{ error: action.error },
       }
 
-    case actionTypes.INCREMENT:
+    case actionTypes.GET_USERS_SUCCESS:
       return {
         ...state,
-        ...{ count: state.count + 1 },
-      }
-
-    case actionTypes.DECREMENT:
-      return {
-        ...state,
-        ...{ count: state.count - 1 },
+        ...{ users: action.users },
       }
 
     case actionTypes.RESET:

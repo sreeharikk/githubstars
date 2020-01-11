@@ -16,6 +16,13 @@ export function getUsers() {
   return { type: actionTypes.GET_USERS }
 }
 
+export function fetUsersSuccess(users) {
+  return { 
+    type: actionTypes.GET_USERS_SUCCESS,
+    users
+   }
+}
+
 export function reset() {
   return { type: actionTypes.RESET }
 }
