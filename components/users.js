@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import UsersList from './list'
+import UsersWrapper from './users.style'
 import { getUsers } from '../actions'
 
 class Users extends Component {
@@ -12,12 +13,14 @@ class Users extends Component {
   render() {
     const { title } = this.props
     return (
-      <div>
+      <UsersWrapper>
         <h1>{title}</h1>
-        <input type='text' name='location' placeholder="Location"/>
-        <button onClick={this.getUsers}>Submit</button>
+        <div className="form-fields">
+          <input type='text' name='location' placeholder="Location"/>
+          <button onClick={this.getUsers}>Submit</button>
+        </div>
         <UsersList />
-      </div>
+      </UsersWrapper>
     )
   }
 }

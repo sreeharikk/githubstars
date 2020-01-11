@@ -7,7 +7,9 @@ function ListItem({
   return (
     <li key={user.id}>
       <img src={user.avatar_url} title={user.login}/>
-      <span>{user.login}</span>
+      <div className="right">
+        <span>{user.login}</span>
+      </div>      
     </li>
   )
 }
