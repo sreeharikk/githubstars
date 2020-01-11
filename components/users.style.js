@@ -3,6 +3,7 @@ import styled from "styled-components";
 const UsersWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    font-family: sans-serif;
     .form-fields{
       display: flex;
       justify-content: center;
@@ -24,10 +25,25 @@ const UsersWrapper = styled.div`
         flex-direction: row;
         padding: 20px 0;
         border-bottom: 1px solid #EAEAEA;
+        font-size: 14px;
         img{
           width: 100px;
           height: 100px;
           margin-right: 5px;
+        }
+        .right{
+          display: flex;
+          flex-direction: column;
+          span{
+            padding: 3px 0;
+          }
+          a{
+            olor: #186cb9;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 7px;
+            text-decoration: none;
+          }
         }
       }
       li:first-child {
