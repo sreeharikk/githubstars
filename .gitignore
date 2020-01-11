@@ -1,0 +1,15 @@
+# Dependency directory
+node_modules
+.vscode
+# Ignore built files
+dist/**/*
+build/
+
+# Ignore debug log
+debug.log
+
+# Ignore .env file
+.env
+
+# Ignore coverage reports
+coverage
