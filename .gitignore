@@ -4,6 +4,7 @@ node_modules
 # Ignore built files
 dist/**/*
 build/
+.next/
 
 # Ignore debug log
 debug.log

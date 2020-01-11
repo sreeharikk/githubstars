@@ -1,7 +1,7 @@
 export const actionTypes = {
   FAILURE: 'FAILURE',
-  INCREMENT: 'INCREMENT',
-  DECREMENT: 'DECREMENT',
+  GET_USERS: 'GET_USERS',
+  GET_USERS_SUCCESS: 'GET_USERS_SUCCESS',
   RESET: 'RESET',
 }
 
@@ -12,12 +12,8 @@ export function failure(error) {
   }
 }
 
-export function increment() {
-  return { type: actionTypes.INCREMENT }
-}
-
-export function decrement() {
-  return { type: actionTypes.DECREMENT }
+export function getUsers() {
+  return { type: actionTypes.GET_USERS }
 }
 
 export function reset() {
