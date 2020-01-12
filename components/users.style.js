@@ -4,14 +4,35 @@ const UsersWrapper = styled.div`
     display: flex;
     flex-direction: column;
     font-family: sans-serif;
+    h1{
+      text-align: center;
+      font-size: 36px;
+    }
     .form-fields{
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      text-align: center;
       padding: 20px 0;
       input{
         width: 200px;
-        height: 25px;
+        height: 35px;
         line-height:25px;
+        margin-right: 5px;
+      }
+      .button {
+        background-color: #4c7daf;
+        border: none;
+        color: white;
+        padding: 7px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+      }
+      .error{
+        color: #FF0000;
+        padding: 8px 0;
       }
     }
     ul{
@@ -36,6 +57,9 @@ const UsersWrapper = styled.div`
           flex-direction: column;
           span{
             padding: 3px 0;
+            i{
+              margin-right: 3px;
+            }
           }
           a{
             olor: #186cb9;

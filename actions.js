@@ -1,5 +1,6 @@
 export const actionTypes = {
   FAILURE: 'FAILURE',
+  INPUT_VALUE: 'INPUT_VALUE',
   GET_USERS: 'GET_USERS',
   GET_USERS_SUCCESS: 'GET_USERS_SUCCESS',
   RESET: 'RESET',
@@ -12,8 +13,18 @@ export function failure(error) {
   }
 }
 
-export function getUsers() {
-  return { type: actionTypes.GET_USERS }
+export function setLocation(location) {
+  return { 
+    type: actionTypes.INPUT_VALUE,
+    location
+  }
+}
+
+export function getUsers(location) {
+  return { 
+    type: actionTypes.GET_USERS,
+    location
+  }
 }
 
 export function fetUsersSuccess(users) {

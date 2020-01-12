@@ -1,28 +1,50 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import Layout from '../components/layout'
 import UsersList from './list'
 import UsersWrapper from './users.style'
-import { getUsers } from '../actions'
+import { getUsers, setLocation } from '../actions'
 
 class Users extends Component {
+
+  inputChange = e => {
+    
+    const { location } = this.props
+    this.props.dispatch(
+      setLocation(e.target.value)
+    )
+  }
+
   getUsers = () => {
-    this.props.dispatch(getUsers())
+    this.props.dispatch(getUsers(this.props.location))
   }
 
   render() {
-    const { title } = this.props
+    const { error } = this.props
     return (
-      <UsersWrapper>
-        <h1>{title}</h1>
-        <div className="form-fields">
-          <input type='text' name='location' placeholder="Location"/>
-          <button onClick={this.getUsers}>Submit</button>
-        </div>
-        <UsersList />
-      </UsersWrapper>
+      <Layout>
+        <UsersWrapper>
+          <h1>Search Github Users</h1>
+          <div className="form-fields">
+            <div>
+              <input
+                type='text'
+                name='location'
+                placeholder="Location"
+                onChange={this.inputChange}/>
+              <button onClick={this.getUsers} className="button">Submit</button>
+            </div>
+            {error && <span className="error">{error}</span>}
+          </div>
+          <UsersList />
+        </UsersWrapper>
+      </Layout>
     )
   }
 }
 
-export default connect(null)(Users)
+
+const mapStateToProps = ({ location, error }) => ({ location, error })
+
+export default connect(mapStateToProps)(Users)

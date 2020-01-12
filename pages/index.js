@@ -7,7 +7,7 @@ class Index extends React.Component {
   }
 
   render() {
-    return <Users title="Index Page" />
+    return <Users />
   }
 }
 
