@@ -4,7 +4,7 @@ import { all, call, delay, put, take, takeLatest } from 'redux-saga/effects'
 import es6promise from 'es6-promise'
 import 'isomorphic-unfetch'
 
-import { actionTypes, failure, fetUsersSuccess} from './actions'
+import { actionTypes, failure, fetUsersSuccess, setLoader} from './actions'
 
 es6promise.polyfill()
 
@@ -20,13 +20,15 @@ function* getProfile (user){
     return user
   } catch (error) {
     user.profile = null
-    return user
+    yield put(setLoader(true))
     yield put(failure(err))
+    return user
   }
 }
 
 function* fetchGithubUsersByLocation(action) {
   try {
+    yield put(setLoader(true))    
     const res = yield call(fetch, `https://api.github.com/search/users?q=location:${action.location}`)
     const users = yield res.json()
 
@@ -35,6 +37,7 @@ function* fetchGithubUsersByLocation(action) {
     yield put(fetUsersSuccess(usersProfile))    
   } catch (err) {
     console.log(err)
+    yield put(setLoader(true))
     yield put(failure(err))
   }
 }

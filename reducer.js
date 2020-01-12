@@ -4,6 +4,7 @@ export const exampleInitialState = {
   users: null,
   location: undefined,
   error: false,
+  loading: false
 }
 
 function reducer(state = exampleInitialState, action) {
@@ -12,6 +13,12 @@ function reducer(state = exampleInitialState, action) {
       return {
         ...state,
         ...{ error: action.error },
+      }
+
+    case actionTypes.SET_LOADER:
+      return {
+        ...state,
+        ...{ loading: action.isLoading },
       }
 
     case actionTypes.INPUT_VALUE:
@@ -23,7 +30,9 @@ function reducer(state = exampleInitialState, action) {
     case actionTypes.GET_USERS_SUCCESS:
       return {
         ...state,
-        ...{ users: action.users },
+        ...{ 
+          users: action.users,
+          loading: false },
       }
 
     case actionTypes.RESET:

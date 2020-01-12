@@ -14,9 +14,9 @@ function List({
             {user.profile ? user.profile.name:''}
           </span>
           <span>{user.profile ? user.profile.bio:''}</span>
-          <span><i class="fa fa-map-marker" aria-hidden="true"></i>
+          <span><i className="fa fa-map-marker" aria-hidden="true"></i>
                 {user.profile ? user.profile.location:''}</span>
-          <span><i class="fa fa-inbox" aria-hidden="true"></i>
+          <span><i className="fa fa-inbox" aria-hidden="true"></i>
           {user.profile ? user.profile.email:''}</span>
         </div>      
       </li>)}

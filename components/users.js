@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+
 import Layout from '../components/layout'
 import UsersList from './list'
+import Button from './button'
 import UsersWrapper from './users.style'
 import { getUsers, setLocation } from '../actions'
 
 class Users extends Component {
 
   inputChange = e => {
-    
-    const { location } = this.props
     this.props.dispatch(
       setLocation(e.target.value)
     )
@@ -21,7 +21,7 @@ class Users extends Component {
   }
 
   render() {
-    const { error } = this.props
+    const { error, loading } = this.props
     return (
       <Layout>
         <UsersWrapper>
@@ -33,7 +33,11 @@ class Users extends Component {
                 name='location'
                 placeholder="Location"
                 onChange={this.inputChange}/>
-              <button onClick={this.getUsers} className="button">Submit</button>
+                <Button
+                  label="Submit"
+                  loading={loading}
+                  onClick={this.getUsers}
+                 />
             </div>
             {error && <span className="error">{error}</span>}
           </div>
